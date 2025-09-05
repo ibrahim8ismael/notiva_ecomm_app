@@ -1,0 +1,150 @@
+# .cursorrules
+
+description: |
+  Project: **Notiva**
+  Type: E-commerce platform / online store
+  Niche: Notebooks, planners, stickers, and stationery. More categories will be added as the brand grows.
+  Market: Egypt (Gen Z and young buyers).
+  Business model: Similar to https://www.dawenha.com — trendy products sold as lifestyle/gift items.
+  Brand vibe: Playful, modern, cool, and youthful. Two languages: Arabic + English.
+
+tech_stack: |
+  - Frontend: Next.js (App Router) + TailwindCSS + ReUI components
+  - Backend: Next.js API routes (Node.js)
+  - Database: MongoDB
+  - Authentication: JWT
+  - Payments: Paymob (Visa, Mastercard, Meeza)
+  - UI Components: ReUI (reui.io) for modern, RTL-ready components
+  - Deployment: VPS or cloud hosting
+  - Reports/Analytics: basic sales & user reports in MongoDB
+
+features_user_side: |
+  - User can register/login with full name, phone number, email, password.
+  - Cart system:
+    - Add multiple products to cart and checkout.
+    - "Buy Now" option for single product checkout.
+  - Product catalog:
+    - Categories: Notebooks, planners, stickers (expandable later).
+    - Each product: title, description, images, price, discount price, category, tags, rating, comments, likes.
+  - Likes system:
+    - Public likes count visible on products (e.g., "1.1k likes").
+    - Users can like/unlike but not see who liked.
+  - Checkout:
+    - Supports cash on delivery.
+    - Supports Paymob (Visa, Mastercard, Meeza).
+  - Orders:
+    - User can track order status: pending, paid, shipped, delivered, cancelled.
+  - Comments and ratings for products.
+  - Wishlist functionality.
+  - Basic static pages: About, Contact, FAQ, Policies.
+
+features_admin_side: |
+  - Admin dashboard (MVP must have).
+  - Admin can:
+    - Add, edit, delete products.
+    - Create and manage promo codes/discounts.
+    - View and manage orders.
+    - See analytics: 
+      - Sales reports
+      - User activity
+      - Best/worst products
+      - Top customers by order value
+      - Breakdown of payments: cash on delivery vs Paymob
+  - Roles: `admin`, `customer`.
+
+rules:
+  - Always assume this is an e-commerce web application for stationery/lifestyle products.
+  - Use **Next.js App Router** for structure, with TailwindCSS for styling.
+  - Keep design **playful, cool, and trendy** (for Gen Z audience).
+  - Database: MongoDB schemas must cover users, products, categories, carts, orders, payments, promo codes, comments/ratings, and likes.
+  - Authentication must use **JWT** (no OAuth for MVP).
+  - Payment integration must be **Paymob** only.
+  - All orders and payments must be logged in MongoDB.
+  - Localization (Arabic + English) must be supported.
+  - Do not add inventory tracking for MVP.
+  - Do not suggest Stripe, PostgreSQL, or unrelated tools.
+  - Email/WhatsApp notifications may exist in the future, but not in MVP (just leave hooks for automation later).
+
+# Development Guidelines
+
+## Code Structure
+- Use Next.js 14+ App Router with TypeScript
+- Organize components in `/components` directory with clear naming
+- API routes in `/app/api` following RESTful conventions
+- MongoDB models in `/lib/models` directory
+- Utilities and helpers in `/lib/utils`
+- Types and interfaces in `/types` directory
+
+## Styling Guidelines
+- Use TailwindCSS for all styling with ReUI component library
+- Leverage ReUI components as base, customize for brand consistency
+- Use CSS variables for theme colors that work for both Arabic and English
+- Implement responsive design mobile-first approach
+- Follow Gen Z aesthetic: bold colors, modern typography, playful elements
+- Use ReUI's built-in RTL support for Arabic language
+
+## Database Schema Requirements
+- Users: name, email, phone, password (hashed), role, createdAt, updatedAt
+- Products: title, description, images[], price, discountPrice, category, tags[], rating, likesCount, commentsCount
+- Categories: name, description, slug, isActive
+- Carts: userId, items[{productId, quantity}], createdAt, updatedAt
+- Orders: userId, items[], totalAmount, status, paymentMethod, paymentStatus, shippingAddress, createdAt
+- Comments: productId, userId, rating, comment, createdAt
+- Likes: productId, userId, createdAt
+- PromoCodes: code, discount, type, expiresAt, isActive, usageLimit, usedCount
+
+## Authentication & Security
+- Use JWT tokens with proper expiration
+- Hash passwords with bcrypt
+- Implement middleware for protected routes
+- Validate all inputs server-side
+- Use CORS properly for API routes
+
+## Payment Integration
+- Integrate Paymob payment gateway only
+- Support Visa, Mastercard, and Meeza cards
+- Implement cash on delivery option
+- Log all payment attempts and statuses
+- Handle payment webhooks securely
+
+## Internationalization
+- Support Arabic (RTL) and English (LTR)
+- Use next-intl or similar for translations
+- Store translations in JSON files
+- Implement language switcher component
+- Ensure proper RTL/LTR layout switching
+
+## Performance & SEO
+- Implement proper meta tags for products
+- Use Next.js Image component for optimization
+- Implement lazy loading for product lists
+- Use proper caching strategies
+- Optimize for mobile performance
+
+## Admin Dashboard Requirements
+- Protected admin routes with role-based access
+- CRUD operations for products and categories
+- Order management interface
+- Analytics dashboard with charts
+- Promo code management
+- User management (view only for MVP)
+
+## Error Handling
+- Implement proper error boundaries
+- Use consistent error response format
+- Log errors appropriately
+- Show user-friendly error messages
+- Handle offline scenarios gracefully
+
+## Testing Considerations
+- Write unit tests for utility functions
+- Test API routes with proper mocking
+- Test payment integration in sandbox mode
+- Validate form submissions and edge cases
+
+## Deployment Notes
+- Environment variables for database, JWT secret, Paymob keys
+- Build optimization for production
+- Proper error logging and monitoring setup
+- Database backup strategy
+- SSL certificate configuration
