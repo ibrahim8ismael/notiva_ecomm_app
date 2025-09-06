@@ -69,8 +69,8 @@ const Footer = () => {
         <footer className="bg-gray-50 border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
-                {/* Main Footer Content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
 
                     {/* Brand Section */}
                     <div className="">
@@ -115,42 +115,47 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Categories */}
-                    <div>
-                        <h4 className="font-medium text-gray-900 mb-8 text-lg">Categories</h4>
-                        <ul className="space-y-4">
-                            <li>
-                                <Link href="/categories/notebooks">Notebooks</Link>
-                            </li>
-                            <li>
-                                <Link href="/categories/sketchbook">Sketchbook</Link>
-                            </li>
-                            <li>
-                                <Link href="/categories/stickers">Sticker</Link>
-                            </li>
-                        </ul>
-                    </div>
+                    {/* Categories & Notiva - Mobile/Tablet: 2 columns, Desktop: separate columns */}
+                    <div className="lg:contents">
+                        <div className="grid grid-cols-2 gap-8 lg:contents">
+                            {/* Categories */}
+                            <div>
+                                <h4 className="font-medium text-gray-900 mb-8 text-lg">Categories</h4>
+                                <ul className="space-y-4">
+                                    <li>
+                                        <Link href="/categories/notebooks">Notebooks</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/categories/sketchbook">Sketchbook</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/categories/stickers">Sticker</Link>
+                                    </li>
+                                </ul>
+                            </div>
 
-                    {/* Notiva */}
-                    <div>
-                        <h4 className="font-medium text-gray-900 mb-8 text-lg">Notiva</h4>
-                        <ul className="space-y-4">
-                            <li>
-                                <Link href="/about">About Notiva</Link>
-                            </li>
-                            <li>
-                                <Link href="/contact">Contact</Link>
-                            </li>
-                            <li>
-                                <Link href="/club">Notiva Club</Link>
-                            </li>
-                            <li>
-                                <Link href="/refund">Refund Policy</Link>
-                            </li>
-                            <li>
-                                <Link href="/terms">Terms & Conditions</Link>
-                            </li>
-                        </ul>
+                            {/* Notiva */}
+                            <div>
+                                <h4 className="font-medium text-gray-900 mb-8 text-lg">Notiva</h4>
+                                <ul className="space-y-4">
+                                    <li>
+                                        <Link href="/about">About Notiva</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/contact">Contact</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/club">Notiva Club</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/refund">Refund Policy</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/terms">Terms & Conditions</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Contact */}
