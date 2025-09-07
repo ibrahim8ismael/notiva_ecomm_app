@@ -83,48 +83,94 @@ const Header = () => {
             </div>
 
             {/* Mobile & Tablet Navigation Overlay */}
-            {isMobileMenuOpen && (
-                <div className="lg:hidden fixed inset-0 top-16 z-40">
-                    <div className="bg-white border-b border-gray-200 shadow-lg">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                            {/* Navigation Links */}
-                            <nav className="flex flex-col gap-5 space-y-1 mb-6">
-                                <Link href="/" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Home
-                                </Link>
-                                <Link href="/products" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Products
-                                </Link>
-                                <Link href="/categories" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>                                    
-                                    Categories
-                                </Link>
-                                <Link href="/about" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    About
-                                </Link>
-                                <Link href="/contact" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Contact
-                                </Link>
-                            </nav>
+            <div className={`lg:hidden fixed inset-0 top-16 z-40 transition-all duration-300 ease-in-out ${isMobileMenuOpen
+                    ? 'opacity-100 visible'
+                    : 'opacity-0 invisible'
+                }`}>
+                <div className={`bg-white border-b border-gray-200 shadow-lg transform transition-all duration-300 ease-in-out ${isMobileMenuOpen
+                        ? 'translate-y-0'
+                        : '-translate-y-full'
+                    }`}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                        {/* Navigation Links */}
+                        <nav className="flex flex-col gap-5 space-y-1 mb-6">
+                            <Link
+                                href="/"
+                                className={`text-lg font-medium transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '100ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Home
+                            </Link>
+                            <Link
+                                href="/products"
+                                className={`text-lg font-medium transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '150ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Products
+                            </Link>
+                            <Link
+                                href="/categories"
+                                className={`text-lg font-medium transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '200ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Categories
+                            </Link>
+                            <Link
+                                href="/about"
+                                className={`text-lg font-medium transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '250ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                About
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className={`text-lg font-medium transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '300ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Contact
+                            </Link>
+                        </nav>
 
-                            {/* Mobile Actions */}
-                            <div className="border-t flex flex-col gap-1 border-gray-200 pt-6 space-y-3">
-                            <Link href="/likes" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button variant="default" className="w-full justify-start gap-4">
+                        {/* Mobile Actions */}
+                        <div className="border-t flex flex-col gap-3 border-gray-200 pt-6">
+                            <Link
+                                href="/likes"
+                                className={`transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '350ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <Button variant="default" className="w-full justify-start gap-4">
                                     <Heart className="w-4 h-4" />
-                                        Likes
-                                    </Button>
-                                </Link>
-                                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button variant="default" className="w-full justify-start gap-4">
+                                    Likes
+                                </Button>
+                            </Link>
+                            <Link
+                                href="/login"
+                                className={`transform transition-all duration-300 ease-out ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                                    }`}
+                                style={{ transitionDelay: isMobileMenuOpen ? '400ms' : '0ms' }}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <Button variant="default" className="w-full justify-start gap-4">
                                     <User className="w-4 h-4" />
-                                        My Account
-                                    </Button>
-                                </Link>
-                            </div>
+                                    My Account
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };
