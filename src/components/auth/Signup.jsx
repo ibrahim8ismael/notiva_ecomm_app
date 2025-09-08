@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, User, Phone, Facebook } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
 import Button from "@/components/ui/Buttons";
 import Logo from "@/components/ui/Logo";
 import Link from "@/components/ui/LinkButton";
@@ -149,19 +149,7 @@ const Signup = () => {
   };
 
 
-  // Handle Facebook signup
-  const handleFacebookSignup = async () => {
-    try {
-      console.log("Facebook signup initiated");
-      // Here you would integrate with Facebook OAuth
-      // For demo purposes, show success
-      setShowSuccessPopup(true);
-    } catch (error) {
-      console.error("Facebook signup error:", error);
-      setErrorMessage("Facebook signup failed. Please try again or use email registration.");
-      setShowErrorPopup(true);
-    }
-  };
+  // Social signup removed per request
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -377,35 +365,13 @@ const Signup = () => {
             </Button>
           </form>
 
-          {/* Divider */}
-          <div className="mt-8 relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or</span>
-            </div>
-          </div>
-
-          {/* Facebook Signup Button */}
-          <div className="mt-6">
-            <Button
-              type="button"
-              variant="default"
-              size="lg"
-              className="w-full flex items-center justify-center gap-3 bg-blue-600 text-white hover:bg-blue-700"
-              onClick={handleFacebookSignup}
-            >
-              <Facebook className="w-5 h-5" />
-              Sign up with Facebook
-            </Button>
-          </div>
+          {/* Social signup removed */}
 
           {/* Login Link */}
           <div className="mt-8 text-center">
             <span className="text-sm text-gray-600">
               Already have an account?{" "}
-              <Link href="/login" variant="primary" size="sm">
+              <Link href="/login" variant="primary" size="sm" className="font-bold">
                 Sign in
               </Link>
             </span>

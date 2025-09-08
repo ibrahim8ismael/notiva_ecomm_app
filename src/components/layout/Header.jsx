@@ -32,7 +32,7 @@ const Header = () => {
                     </div>
 
                     {/* Navigation Links - Desktop & Large Tablets */}
-                    <nav className="hidden lg:flex items-center space-x-8">
+                    <nav className="hidden lg:flex items-center space-x-14">
                         <Link href="/">Home</Link>
                         <Link href="/products">Products</Link>
                         <Link href="/categories">Categories</Link>
@@ -82,49 +82,29 @@ const Header = () => {
 
             </div>
 
-            {/* Mobile & Tablet Navigation Overlay */}
-            {isMobileMenuOpen && (
-                <div className="lg:hidden fixed inset-0 top-16 z-40">
-                    <div className="bg-white border-b border-gray-200 shadow-lg">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                            {/* Navigation Links */}
-                            <nav className="flex flex-col gap-5 space-y-1 mb-6">
-                                <Link href="/" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Home
-                                </Link>
-                                <Link href="/products" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Products
-                                </Link>
-                                <Link href="/categories" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>                                    
-                                    Categories
-                                </Link>
-                                <Link href="/about" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    About
-                                </Link>
-                                <Link href="/contact" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>
-                                    Contact
-                                </Link>
-                            </nav>
-
-                            {/* Mobile Actions */}
-                            <div className="border-t flex flex-col gap-1 border-gray-200 pt-6 space-y-3">
-                            <Link href="/likes" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button variant="default" className="w-full justify-start gap-4">
-                                    <Heart className="w-4 h-4" />
-                                        Likes
-                                    </Button>
-                                </Link>
-                                <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button variant="default" className="w-full justify-start gap-4">
+            {/* Mobile & Tablet Navigation - Relative, simple open/close */}
+            <div className="lg:hidden relative w-full">
+                <div className={`absolute w-full overflow-hidden duration-300 ease-out bg-white border-b border-gray-200 shadow-sm ${isMobileMenuOpen ? 'max-h-[420px]' : 'max-h-0'}`}>
+                    <div className="px-4 sm:px-6 py-5">
+                        <nav className="flex flex-col gap-4 mb-5">
+                            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">Home</Link>
+                            <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">Products</Link>
+                            <Link href="/categories" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">Categories</Link>
+                            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">About</Link>
+                            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">Contact</Link>
+                            <Link href="/likes" onClick={() => setIsMobileMenuOpen(false)} className="text-lg">Likes</Link>
+                        </nav>
+                        <div className="border-t border-gray-200 pt-5 flex flex-col gap-3">
+                            <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                                <Button variant="default" className="w-full justify-start gap-3 border-2 border-black rounded-xl bg-white text-black hover:bg-black hover:text-white">
                                     <User className="w-4 h-4" />
-                                        My Account
-                                    </Button>
-                                </Link>
-                            </div>
+                                    Login
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };
