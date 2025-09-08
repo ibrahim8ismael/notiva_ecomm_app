@@ -2,7 +2,7 @@
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AdvBanner from "@/components/AdvBanner";
+import AdvBanner from "@/components/layout/AdvBanner";
 
 export const metadata = {
   title: "Notiva | Aesthetic Stationery & Notebooks for Gen Z",

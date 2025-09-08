@@ -1,16 +1,17 @@
 import * as React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from "lucide-react";
 import Button from "./Buttons";
 
 const popupVariants = {
   variant: {
-    default: "bg-white border-gray-200 text-gray-900",
-    success: "bg-green-50 border-green-200 text-green-800",
-    error: "bg-red-50 border-red-200 text-red-800",
-    warning: "bg-yellow-50 border-yellow-200 text-yellow-800",
-    info: "bg-blue-50 border-blue-200 text-blue-800",
-    dark: "bg-gray-900 border-gray-700 text-white"
+    default: "bg-white border-2 border-black text-black",
+    success: "bg-white border-2 border-black text-black",
+    error: "bg-white border-2 border-black text-black",
+    warning: "bg-white border-2 border-black text-black",
+    info: "bg-white border-2 border-black text-black",
+    dark: "bg-black border-2 border-black text-white"
   },
   size: {
     sm: "max-w-sm",
@@ -26,13 +27,13 @@ const getIcon = (variant) => {
   
   switch (variant) {
     case "success":
-      return <CheckCircle {...iconProps} className="w-5 h-5 flex-shrink-0 text-green-600" />;
+      return <CheckCircle {...iconProps} className="w-5 h-5 flex-shrink-0 text-black" />;
     case "error":
-      return <AlertCircle {...iconProps} className="w-5 h-5 flex-shrink-0 text-red-600" />;
+      return <AlertCircle {...iconProps} className="w-5 h-5 flex-shrink-0 text-black" />;
     case "warning":
-      return <AlertTriangle {...iconProps} className="w-5 h-5 flex-shrink-0 text-yellow-600" />;
+      return <AlertTriangle {...iconProps} className="w-5 h-5 flex-shrink-0 text-black" />;
     case "info":
-      return <Info {...iconProps} className="w-5 h-5 flex-shrink-0 text-blue-600" />;
+      return <Info {...iconProps} className="w-5 h-5 flex-shrink-0 text-black" />;
     default:
       return null;
   }
@@ -84,9 +85,12 @@ const Popup = React.forwardRef(({
           {/* Header with Icon and Title */}
           {(showIcon || title) && (
             <div className="flex items-start gap-3 mb-4">
-              {showIcon && getIcon(variant)}
+              <div className="flex items-center gap-2">
+                <Image src="/logo.png" alt="Notiva" width={24} height={24} className="h-6 w-6 object-contain" />
+                {/* {showIcon && getIcon(variant)} */}
+              </div>
               {title && (
-                <h3 className="text-lg font-semibold leading-6">
+                <h3 className="text-lg font-extrabold leading-6">
                   {title}
                 </h3>
               )}
@@ -95,8 +99,8 @@ const Popup = React.forwardRef(({
 
           {/* Message */}
           {message && (
-            <div className={cn("mb-4", showIcon || title ? "ml-8" : "")}>
-              <p className="text-sm leading-relaxed">
+            <div className={cn("mb-4", showIcon || title ? "ml-8" : "")}> 
+              <p className="text-sm leading-relaxed text-gray-700">
                 {message}
               </p>
             </div>
