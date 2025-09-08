@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const Logo = ({ 
   type = "text", 
@@ -36,6 +37,7 @@ const Logo = ({
   
   return (
     <div className={cn("flex items-center", className)} {...props}>
+      <Link href="/">
       <Image
         src={logoSrc}
         alt={altText}
@@ -47,6 +49,7 @@ const Logo = ({
         )}
         priority
       />
+      </Link>
     </div>
   );
 };

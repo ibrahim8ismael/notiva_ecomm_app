@@ -2,6 +2,7 @@
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import AdvBanner from "@/components/AdvBanner";
 
 export const metadata = {
   title: "Notiva | Aesthetic Stationery & Notebooks for Gen Z",
@@ -43,8 +44,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased bg-gray-50">
+        <AdvBanner />
         <Header />
-        <main className="min-h-screen">
+        <main>
           {children}
         </main>
         <Footer />
